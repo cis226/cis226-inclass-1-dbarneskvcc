@@ -4,6 +4,7 @@ import os
 # First-Party Imports
 from employee import Employee
 from user_interface import UserInterface
+from utils import CSVProcessor
 
 def main(*args):
     """Method to run program"""
@@ -36,15 +37,25 @@ def main(*args):
     # Instances of classes can be stored in a list.
     # Just like any other type in python
     employees = []
-    employees.append(
-        Employee("David", "Barnes", 835.00)
-    )
-    employees.append(
-        Employee("James", "Kirk", 453.00)
-    )
-    employees.append(
-        Employee("Jean-Luc", "Picard", 290.00)
-    )
+
+    # Path to CSV file
+    path_to_csv_file = "employees.csv"
+
+    # Make new instance of CSVProcessor class
+    csv_processor = CSVProcessor()
+
+    # Reading the CSV file could raise exceptions.
+    # Be sure to catch them.
+    try:
+        # Call the import_csv method sending in our path
+        # to the csv file and the Employee list.
+        csv_processor.import_csv(path_to_csv_file, employees)
+    except FileNotFoundError:
+        # Print error message
+        ui.print_file_not_found_error()
+    except EOFError:
+        # Print error message
+        ui.print_empty_file_error()
 
     # Get some input from the user
     selection = ui.display_menu_and_get_response()

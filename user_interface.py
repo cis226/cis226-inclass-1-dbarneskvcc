@@ -40,6 +40,15 @@ class UserInterface:
         print(f"{'First Name':<10} {'Last Name':<20} {'Weekly Salary':>14}")
         print(output_list)
 
+    def print_file_not_found_error(self):
+        """Display file not found error"""
+        print("ERROR: File not found for opening.")
+        print()
+
+    def print_empty_file_error(self):
+        """Display empty file error"""
+        print("ERROR: The file was unexpectedly empty.")
+        print()
 
     def _print_menu(self):
         """Print menu to user"""
