@@ -18,6 +18,9 @@ class Employee:
     # Methods
     def __str__(self):
         """String method"""
+        # Does nothing. Shows I can call private methods
+        # from inside the same class.
+        self.__private_method()
         # f"{self.first_name:<10} {self.last_name:<20} {self.weekly_salary:>14}"
         return (
             f"{self.first_name:<10}"
@@ -35,7 +38,7 @@ class Employee:
             1 + (percentage / 100)
         )
 
-    def _private_method(self):
+    def __private_method(self):
         """Demo of a private method"""
         pass
         # This is just a demo of a private method.
